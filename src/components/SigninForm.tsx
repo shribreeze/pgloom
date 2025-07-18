@@ -69,8 +69,8 @@ export function SigninForm() {
         router.push("/tenant/dashboard");
       } else {
         const role = userDoc.data()?.role;
-        if (role === "owner") router.push("/owner/dashboard");
-        else router.push("/tenant/dashboard");
+        if (role === "owner") router.push("/dashboard");
+        else router.push("/dashboard");
       }
     } catch (err: any) {
       setError(err.message || "Google sign-in failed");
@@ -140,7 +140,7 @@ export function SigninForm() {
         
         <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
             Don't have an account?
-            <Link href="/signup"> Sign Up</Link>
+            <Link href="/signup" className="text-blue-600 underline hover:text-blue-800"> Sign Up</Link>
         </p>
       </form>
     </div>

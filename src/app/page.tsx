@@ -1,19 +1,18 @@
-import { HeroHighlightDemo } from "@/components/HeroHighlightDemo";
+import { Footer } from "@/components/Footer";
+import { HeroHighlightMain } from "@/components/HeroHighlightMain";
 import { HomePage } from "@/components/HomePage";
 import { NavbarMain } from "@/components/NavbarMain";
 
 export default function Home() {
   return (
     <>
-    <div className="">
+    <div className="bg-neutral-950 text-white">
   
       <NavbarMain />
-      {/* <HeroHighlightDemo />   */}
+      {/* <HeroHighlightMain />   */}
       {/* <HomePage /> */}
     
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        
-      </footer>
+      <Footer />
     </div>
     </>
   );

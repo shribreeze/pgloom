@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function RequestOwnerAccess() {
   const router = useRouter();
@@ -16,6 +20,7 @@ export default function RequestOwnerAccess() {
     phone: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -23,6 +28,7 @@ export default function RequestOwnerAccess() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
     if (!user) return alert("Please log in first");
 
@@ -38,63 +44,71 @@ export default function RequestOwnerAccess() {
       });
       setSubmitted(true);
     } catch (err) {
-      alert("Request failed. Try again later.");
+      setError("Request failed. Try again later.");
     }
   };
 
   if (submitted) {
     return (
-      <div className="p-8">
-        <h2 className="text-xl font-bold">Request Submitted 🎉</h2>
-        <p className="mt-2">Our team will review and verify your request soon.</p>
-      </div>
+      <Card className="max-w-md mx-auto mt-8">
+        <CardHeader>
+          <CardTitle>Request Submitted 🎉</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Your request has been submitted. Our team will review and verify your details shortly.</p>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="max-w-md mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-4">Owner Access Request</h2>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="pgName">PG Name</label>
-          <input
-            id="pgName"
-            type="text"
-            value={form.pgName}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="pgAddress">PG Address</label>
-          <input
-            id="pgAddress"
-            type="text"
-            value={form.pgAddress}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            id="phone"
-            type="tel"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded"
-        >
-          Submit Request
-        </button>
-      </form>
-    </div>
+    <Card className="max-w-md mx-auto mt-8">
+      <CardHeader>
+        <CardTitle>Owner Access Request</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div className="space-y-2">
+            <Label htmlFor="pgName">PG Name</Label>
+            <Input
+              id="pgName"
+              placeholder="Sunrise PG"
+              type="text"
+              value={form.pgName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="pgAddress">PG Address</Label>
+            <Input
+              id="pgAddress"
+              placeholder="Koramangala, Bangalore"
+              type="text"
+              value={form.pgAddress}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="phone">Phone Number</Label>
+            <Input
+              id="phone"
+              placeholder="9876543210"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {error && <p className="text-sm text-red-600">{error}</p>}
+
+          <Button type="submit" className="w-full">
+            Submit Request
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }

@@ -11,8 +11,9 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
-import { HeroHighlightDemo } from "./HeroHighlightDemo";
-import { Link } from "lucide-react";
+import { HeroHighlightMain } from "./HeroHighlightMain";
+import Link from "next/link";
+import { Building, CalendarCheck, UserCheck, BedDouble, Shirt } from "lucide-react";
 
 export function NavbarMain() {
   const navItems = [
@@ -33,17 +34,15 @@ export function NavbarMain() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-neutral-950 text-white">
       <Navbar>
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            {/* <Link href="/signin">
-              <NavbarButton as="a" variant="secondary">Login</NavbarButton>
-            </Link> */}
-
+            <Link href="/signin">
+              <NavbarButton as="a" variant="secondary" className="text-neutral-300">Login</NavbarButton>
+            </Link>
           </div>
         </NavBody>
 
@@ -66,7 +65,7 @@ export function NavbarMain() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-neutral-300 dark:text-neutral-300"
               >
                 <span className="block">{item.name}</span>
               </a>
@@ -79,117 +78,82 @@ export function NavbarMain() {
               >
                 Login
               </NavbarButton>
-              <NavbarButton
+              {/* <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full"
               >
                 Book a call
-              </NavbarButton>
+              </NavbarButton> */}
             </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-      <DummyContent />
-
-      {/* Navbar */}
+      <MainContent />
     </div>
   );
 }
 
-const DummyContent = () => {
+const features = [
+  {
+    id: 1,
+    icon: <Building className="w-8 h-8 text-indigo-400 dark:text-indigo-400" />,
+    title: "PG Listings & Booking",
+    desc: "Explore verified PGs, check amenities, and book instantly online.",
+  },
+  {
+    id: 2,
+    icon: <CalendarCheck className="w-8 h-8 text-green-400 dark:text-green-400" />,
+    title: "Rent & Routine Management",
+    desc: "Track rent, receive reminders, and manage your PG life with ease.",
+  },
+  {
+    id: 3,
+    icon: <UserCheck className="w-8 h-8 text-yellow-400 dark:text-yellow-400" />,
+    title: "Owner Dashboard",
+    desc: "PG Owners can manage rooms, tenants, menus, and more in real-time.",
+  },
+  {
+    id: 4,
+    icon: <BedDouble className="w-8 h-8 text-pink-400 dark:text-pink-400" />,
+    title: "Room Allocation",
+    desc: "Seamlessly assign, reassign or remove tenants from rooms.",
+  },
+  {
+    id: 5,
+    icon: <Shirt className="w-8 h-8 text-blue-400 dark:text-blue-400" />,
+    title: "Laundry Booking",
+    desc: "Tenants can book laundry slots online—automated, fast, and easy.",
+  },
+];
+
+const MainContent = () => {
   return (
-    <div className="container mx-auto p-8 pt-24">
-      <HeroHighlightDemo />
-      {/* <h1 className="mb-4 text-center text-3xl font-bold">
-        Check the navbar at the top of the container
-      </h1>
-      <p className="mb-10 text-center text-sm text-zinc-500">
-        For demo purpose we have kept the position as{" "}
-        <span className="font-medium">Sticky</span>. Keep in mind that this
-        component is <span className="font-medium">fixed</span> and will not
-        move when scrolling.
-      </p> */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        {[
-          {
-            id: 1,
-            title: "The",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 2,
-            title: "First",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 3,
-            title: "Rule",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 4,
-            title: "Of",
-            width: "md:col-span-3",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 5,
-            title: "F",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 6,
-            title: "Club",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 7,
-            title: "Is",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 8,
-            title: "You",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 9,
-            title: "Do NOT TALK about",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 10,
-            title: "F Club",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-        ].map((box) => (
-          <div
-            key={box.id}
-            className={`${box.width} ${box.height} ${box.bg} flex items-center justify-center rounded-lg p-4 shadow-sm`}
-          >
-            <h2 className="text-xl font-medium">{box.title}</h2>
-          </div>
-        ))}
+    <div className="bg-neutral-950 text-white container mx-auto px-4 pt-24 pb-12">
+      <HeroHighlightMain />
+
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold text-center text-white dark:text-white">
+          Why Choose <span className="text-indigo-600">PGLoom</span>?
+        </h2>
+        <p className="mt-2 text-center text-neutral-400 dark:text-neutral-400 max-w-xl mx-auto">
+          Everything you need to manage or stay in a PG — Rent. Room. Routine. Sorted.
+        </p>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item) => (
+            <div
+              key={item.id}
+              className="rounded-xl bg-neutral-900 dark:bg-neutral-900 p-6 shadow hover:shadow-md transition-all duration-300"
+            >
+              <div className="mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold text-text-white dark:text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-neutral-400 dark:text-neutral-400">{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -165,7 +165,17 @@ export function SignupForm() {
                 
         <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
             Already have an account?
-            <Link href="/signin"> Sign In</Link>
+            <Link href="/signin" className="text-blue-600 underline hover:text-blue-800"> Sign In</Link>
+        </p>
+
+        <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
+          Want to register as a PG owner?{" "}
+            <Link
+              href="/request-owner-access"
+              className="text-blue-600 underline hover:text-blue-800"
+            >
+              Request Owner Access
+            </Link>
         </p>
       </form>
     </div>

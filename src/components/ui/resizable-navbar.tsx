@@ -237,12 +237,13 @@ export const NavbarLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-white"
     >
       <img
-        src="favicon.ico"
+        src="logo5.png"
         alt="logo"
-        width={30}
+        width={120}
         height={30}
+        // className="bg-white rounded-full dark:bg-white" 
       />
-      <span className="font-medium text-white dark:text-white">PGLoom</span>
+      {/* <span className="font-medium text-white dark:text-white">PGLoom</span> */}
     </a>
   );
 };

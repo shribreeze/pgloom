@@ -65,7 +65,7 @@ export default function PricingComponent() {
             }
             className={cn(
               "bg-neutral-800 w-14 h-7 rounded-full p-1 transition-colors duration-300",
-              billingCycle === "yearly" && "bg-blue-600"
+              billingCycle === "yearly" && "bg-teal-600"
             )}
           >
             <div

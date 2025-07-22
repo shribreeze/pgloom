@@ -140,16 +140,17 @@ const MainContent = () => {
           {features.map((item) => (
             <div
               key={item.id}
-              className="rounded-xl bg-neutral-900 dark:bg-neutral-900 p-6 shadow hover:shadow-md transition-all duration-300"
+              className="rounded-xl bg-neutral-900 dark:bg-neutral-900 p-6 shadow hover:scale-[1.015] hover:shadow-[0_0_30px_#00ffe0aa] transition-all duration-300"
             >
               <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-text-white dark:text-white mb-2">
+              <h3 className="text-xl font-semibold text-white dark:text-white mb-2">
                 {item.title}
               </h3>
               <p className="text-neutral-400 dark:text-neutral-400">{item.desc}</p>
             </div>
           ))}
         </div>
+
       </div>
       <div id="pricing" className="mt-8 scroll-mt-10 md:mt-12">
         <PricingComponent />

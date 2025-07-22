@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { HeroHighlight, Highlight } from "./ui/hero-highlight";
+import { Button } from "./ui/button";
 
 export function HeroHighlightMain() {
   return (
@@ -37,6 +38,10 @@ export function HeroHighlightMain() {
         PG owners, and modern living. Simplify payments, rooms, meals,
         complaints, and more — all in one place.
       </motion.p>
+      <div className="">
+
+        <Button />
+      </div>
     </HeroHighlight>
   );
 }

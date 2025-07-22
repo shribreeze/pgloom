@@ -68,8 +68,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("fixed inset-x-0 top-5 z-40 w-full", className)}
+      className={cn("fixed inset-x-0 top-2 md:top-5 z-40 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -234,16 +233,18 @@ export const NavbarLogo = () => {
   return (
     <a
       href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 mr-4 flex items-center px-2 py-1 text-sm font-normal text-white"
     >
       <img
-        src="logo5.png"
+        src="logo6.png"
         alt="logo"
-        width={120}
-        height={30}
+        width={40}
+        height={40}
         // className="bg-white rounded-full dark:bg-white" 
       />
-      {/* <span className="font-medium text-white dark:text-white">PGLoom</span> */}
+      {/* <span className="font-medium text-2xl bg-gradient-to-r from-blue-500 via-yellow-400 to-pink-500">PGLoom</span> */}
+      <span className="font-medium text-xl text-blue-400 dark:text-blue-400">PG<span className="text-yellow-300">Loom</span></span>
+
     </a>
   );
 };

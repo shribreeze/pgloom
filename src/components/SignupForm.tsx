@@ -84,11 +84,12 @@ export function SignupForm() {
   };
 
   return (
-    <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
-      <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+    <div className="bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] shadow-2xl mx-auto w-full max-w-md rounded-sm p-1 md:rounded-2xl md:p-1 dark:bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]">
+      <div className="relative z-10 rounded-sm md:rounded-2xl bg-black p-4 md:p-8">
+      <h2 className="text-xl font-bold text-neutral-200 dark:text-neutral-200">
         Welcome to PGLoom
       </h2>
-      <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+      <p className="mt-2 max-w-sm text-sm text-neutral-300 dark:text-neutral-300">
         Sign up to access your dashboard
       </p>
 
@@ -137,38 +138,38 @@ export function SignupForm() {
         </LabelInputContainer>
 
         <button
-          className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white"
+          className="group/btn relative block h-10 w-full rounded-md bg-zinc-800 from-zinc-900 to-zinc-900 font-medium text-white shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"          
           type="submit"
         >
-          Sign up →
+          Sign up &rarr;
           <BottomGradient />
         </button>
 
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
 
-        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
+        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-700 to-transparent dark:via-neutral-700" />
 
         <div className="flex flex-col space-y-4">
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900"
+            className="group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-zinc-900 px-4 font-medium text-black dark:bg-zinc-900"
           >
-            <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-            <span className="text-sm text-neutral-700 dark:text-neutral-300">
+            <IconBrandGoogle className="h-4 w-4 text-neutral-300 dark:text-neutral-300" />
+            <span className="text-sm text-neutral-300 dark:text-neutral-300">
               Sign in with Google
             </span>
             <BottomGradient />
           </button>
         </div>
-        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
+        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-700 to-transparent dark:via-neutral-700" />
                 
-        <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-            Already have an account?
-            <Link href="/signin" className="text-blue-600 underline hover:text-blue-800"> Sign In</Link>
+        <p className="mt-2 max-w-sm text-sm text-neutral-300 dark:text-neutral-300">
+            Already have an account?{" "}
+            <Link href="/signin" className="text-blue-600 underline hover:text-blue-800">Sign In</Link>
         </p>
 
-        <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
+        <p className="mt-4 text-sm text-neutral-300 dark:text-neutral-300">
           Want to register as a PG owner?{" "}
             <Link
               href="/request-owner-access"
@@ -178,6 +179,7 @@ export function SignupForm() {
             </Link>
         </p>
       </form>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Footer } from "@/components/Footer";
 import { HeroHighlightMain } from "@/components/HeroHighlightMain";
 import { HomePage } from "@/components/HomePage";
 import { NavbarMain } from "@/components/NavbarMain";
+import PricingComponent from "@/components/PricingComponent";
 
 export default function Home() {
   return (
@@ -11,7 +12,6 @@ export default function Home() {
       <NavbarMain />
       {/* <HeroHighlightMain />   */}
       {/* <HomePage /> */}
-    
       <Footer />
     </div>
     </>

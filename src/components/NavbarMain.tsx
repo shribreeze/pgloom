@@ -14,6 +14,9 @@ import { useState } from "react";
 import { HeroHighlightMain } from "./HeroHighlightMain";
 import Link from "next/link";
 import { Building, CalendarCheck, UserCheck, BedDouble, Shirt } from "lucide-react";
+import Pricing from "./PricingComponent";
+import PricingComponent from "./PricingComponent";
+import Contact from "./Contact";
 
 export function NavbarMain() {
   const navItems = [
@@ -132,7 +135,7 @@ const MainContent = () => {
     <div className="bg-neutral-950 text-white container mx-auto px-4 pt-24 pb-12">
       <HeroHighlightMain />
 
-      <div className="mt-16">
+      <div className="mt-16 scroll-mt-24" id="features">
         <h2 className="text-3xl font-bold text-center text-white dark:text-white">
           Why Choose <span className="text-indigo-600">PGLoom</span>?
         </h2>
@@ -154,6 +157,12 @@ const MainContent = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div id="pricing" className="mt-12 scroll-mt-16 md:mt-16">
+        <PricingComponent />
+      </div>
+      <div id="contact" className="mt-12 scroll-mt-16 md:mt-16">
+        <Contact  />
       </div>
     </div>
   );

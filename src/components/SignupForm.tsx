@@ -41,15 +41,15 @@ export function SignupForm() {
 
       const user = userCredential.user;
 
-      // Save user info to Firestore with default role = tenant
+      // Save user info to Firestore with default role = tenant/owner
       await setDoc(doc(db, "users", user.uid), {
         firstname: form.firstname,
         lastname: form.lastname,
         email: form.email,
-        role: "tenant", // default role for signup
+        role: "owner", // default role for signup
       });
 
-      router.push("/tenant/dashboard");
+      router.push("/owner/dashboard");
     } catch (err: any) {
       setError(err.message || "Signup failed");
     }
@@ -70,13 +70,13 @@ export function SignupForm() {
           firstname: user.displayName?.split(" ")[0] || "",
           lastname: user.displayName?.split(" ")[1] || "",
           email: user.email,
-          role: "tenant",
+          role: "owner",
         });
-        router.push("/tenant/dashboard");
+        router.push("/owner/dashboard");
       } else {
         const role = userDoc.data()?.role;
-        if (role === "owner") router.push("/owner/dashboard");
-        else router.push("/tenant/dashboard");
+        if (role === "tenant") router.push("/tenant/dashboard");
+        else router.push("/owner/dashboard");
       }
     } catch (err: any) {
       setError(err.message || "Google sign-in failed");
@@ -138,7 +138,7 @@ export function SignupForm() {
         </LabelInputContainer>
 
         <button
-          className="group/btn relative block h-10 w-full rounded-md bg-zinc-800 from-zinc-900 to-zinc-900 font-medium text-white shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"          
+          className="group/btn relative block h-10 w-full cursor-pointer rounded-md bg-zinc-800 from-zinc-900 to-zinc-900 font-medium text-white shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"          
           type="submit"
         >
           Sign up &rarr;
@@ -153,7 +153,7 @@ export function SignupForm() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-zinc-900 px-4 font-medium text-black dark:bg-zinc-900"
+            className="group/btn shadow-input relative flex h-10 w-full cursor-pointer items-center justify-start space-x-2 rounded-md bg-zinc-900 px-4 font-medium text-black dark:bg-zinc-900"
           >
             <IconBrandGoogle className="h-4 w-4 text-neutral-300 dark:text-neutral-300" />
             <span className="text-sm text-neutral-300 dark:text-neutral-300">
@@ -170,12 +170,12 @@ export function SignupForm() {
         </p>
 
         <p className="mt-4 text-sm text-neutral-300 dark:text-neutral-300">
-          Want to register as a PG owner?{" "}
+          Want to register as a Tenant?{" "}
             <Link
-              href="/request-owner-access"
+              href="/tenant-signup"
               className="text-blue-600 underline hover:text-blue-800"
             >
-              Request Owner Access
+              Register here
             </Link>
         </p>
       </form>

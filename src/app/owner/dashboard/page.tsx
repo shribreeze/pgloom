@@ -105,7 +105,7 @@ export default function OwnerDashboard() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 m-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -116,7 +116,7 @@ export default function OwnerDashboard() {
             Log out
         </Button>
         <Select value={selectedPG} onValueChange={setSelectedPG}>
-          <SelectTrigger className="w-48">
+          <SelectTrigger className="w-auto">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -203,7 +203,7 @@ export default function OwnerDashboard() {
 
       {/* Main Content Tabs */}
       <Tabs defaultValue="rooms" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 mb-16 lg:mb-0">
           <TabsTrigger value="rooms">Rooms</TabsTrigger>
           <TabsTrigger value="tenants">Tenants</TabsTrigger>
           <TabsTrigger value="rent">Rent Tracking</TabsTrigger>

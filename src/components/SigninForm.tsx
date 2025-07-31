@@ -69,8 +69,8 @@ export function SigninForm() {
         router.push("/owner/dashboard");
       } else {
         const role = userDoc.data()?.role;
-        if (role === "tenant") router.push("/dashboard");
-        else router.push("/dashboard");
+        if (role === "tenant") router.push("/tenant/dashboard");
+        else router.push("/owner/dashboard");
       }
     } catch (err: any) {
       setError(err.message || "Google sign-in failed");

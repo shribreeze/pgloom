@@ -50,7 +50,7 @@ export default function TenantDashboard() {
     };
   // Mock data for tenant
   const tenantInfo = {
-    name: "Jane Smith",
+    name: "Sameer Gautam",
     room: "R002",
     pgName: "Sunrise PG - Koramangala",
     joinDate: "2024-02-01",
@@ -107,16 +107,16 @@ export default function TenantDashboard() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 m-6">
       {/* Header */}
       <div className="flex items-center justify-between sm:items-start sm:flex-row flex-col space-y-4 sm:space-y-0">
         <div>
-            <h1 className="text-3xl font-bold text-gray-900">Welcome back, {tenantInfo.name}!</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Hi, {tenantInfo.name}!</h1>
             <p className="text-gray-600">
             {tenantInfo.pgName} • Room {tenantInfo.room}
             </p>
         </div>
-        <Button className="w-full sm:w-auto" variant="outline" onClick={handleLogout}>
+        <Button className="w-full sm:w-auto border cursor-pointer" variant="outline" onClick={handleLogout}>
             Log out
         </Button>
       </div>
@@ -175,8 +175,9 @@ export default function TenantDashboard() {
       </div>
 
       {/* Main Content Tabs */}
+      {/* <div className="mt-6"> */}
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 mb-16 lg:mb-0">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="rent">Rent Status</TabsTrigger>
           <TabsTrigger value="mess">Mess Menu</TabsTrigger>
@@ -184,7 +185,7 @@ export default function TenantDashboard() {
           <TabsTrigger value="laundry">Laundry</TabsTrigger>
           <TabsTrigger value="announcements">Announcements</TabsTrigger>
         </TabsList>
-
+        {/* </div> */}
         {/* Overview Tab */}
         <TabsContent value="overview" className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
